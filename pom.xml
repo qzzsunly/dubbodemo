@@ -9,6 +9,7 @@
 	<modules>
 		<module>api</module>
 		<module>dubbo</module>
+		<module>producer</module>
 	</modules>
 	<packaging>pom</packaging>
 
