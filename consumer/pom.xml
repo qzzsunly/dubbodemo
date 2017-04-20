@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo</artifactId>
+    <artifactId>dubbodemo-consumer</artifactId>
     <packaging>jar</packaging>
 
-    <name>dubbo</name>
+    <name>consumer</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -54,9 +54,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>life.qzz</groupId>
             <artifactId>api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
         </dependency>
     </dependencies>
 </project>
