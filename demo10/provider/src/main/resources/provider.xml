@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:registry id ="register1" address="zookeeper://localhost:2181"/>
+    <dubbo:registry id ="register2" address="zookeeper://localhost:2182"/>
+
+    <!--多注册中心注册-->
+    <dubbo:service id="demoService1" interface="life.qzz.dubbodemo.api.DemoService" ref="demoService" registry="register1,register2"/>
+
+    <!--不同服务使用不同注册中心-->
+    <dubbo:service  id="demoService2" interface="life.qzz.dubbodemo.api.DemoService" ref="demoService" registry="register2"/>
+    <bean id="demoService" class="life.qzz.dubbodemo.api.impl.DemoServiceImpl"/>
+
+</beans>

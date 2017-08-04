@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--<dubbo:registry id ="register1" address="zookeeper://localhost:2181"/>-->
+    <!--<dubbo:registry id ="register2" address="zookeeper://localhost:2182"/>-->
+
+    <dubbo:annotation package="life.qzz.dubbodemo"/>
+    <!--<dubbo:reference interface="life.qzz.dubbodemo.api.DemoService" id="demoService" init="true" timeout="50000" registry="register1"/>-->
+    <!--<dubbo:reference interface="life.qzz.dubbodemo.api.DemoService" id="demoService2" init="true" timeout="50000" registry="register2"/>-->
+
+
+    <!-- 多注册中心配置，竖号分隔表示同时连接多个不同注册中心，同一注册中心的多个集群地址用逗号分隔 -->
+    <dubbo:registry address="zookeeper://localhost:2181|zookeeper://localhost:2182" />
+
+    <!-- 引用服务 -->
+    <dubbo:reference interface="life.qzz.dubbodemo.api.DemoService" id="demoService" init="true" timeout="50000"/>
+
+</beans>
